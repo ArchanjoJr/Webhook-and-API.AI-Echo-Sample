@@ -35,7 +35,7 @@ restService.post("/echo", function(req, res) {
   });
 });
 restService.post('/test', (req, res) => {
-  if(req.body.result.parameters.hasOwnProperty('william')){
+  if(req.body.result.parametershasOwnProperty('william')){
     request(options, function (err, response, body) {
       if(err){
         console.log('err:', err);
@@ -50,7 +50,7 @@ restService.post('/test', (req, res) => {
         })
       }
     });
-  }
+  }else{
     if(req.body.result.parameters.hasOwnProperty('matheus')){
       request(options, function (err, response, body) {
         if(err){
@@ -68,6 +68,7 @@ restService.post('/test', (req, res) => {
       });
     }
   }
+}
 );
 restService.get('/ok',(req, res) => {
   request(options, function (err, response, body) {
