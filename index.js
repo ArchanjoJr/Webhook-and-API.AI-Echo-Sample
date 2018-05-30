@@ -77,6 +77,7 @@ restService.post('/test', (req, res) => {
           displayText: 'Registro Aberto',
           source: 'api-test-dial'
         })
+        asdasdasd
       break;
     case 'WaterFactIntent':
     const opt = [
