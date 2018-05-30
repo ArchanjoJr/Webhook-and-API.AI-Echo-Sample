@@ -26,20 +26,11 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post('/test', (req, res) => {
-  if(has(req.body.result.parameters, 'a')){
-    res.json({
-      speech:'a',
-      displayText:'a',
-      source: 'api-test-dial'
-    })
-  }
-  if(has(req.body.result.parameters, 'b')){
-    res.json({
-      speech:'b',
-      displayText:'b',
-      source: 'api-test-dial'
-    })
-  }   
+  res.json({
+    speech:req.body.result.action,
+    displayText: req.body.result.action,
+    source: 'api-test-dial'
+  })   
 });
 
 restService.get('/ok',(req, res) => {
