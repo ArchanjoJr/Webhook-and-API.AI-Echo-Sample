@@ -35,7 +35,7 @@ restService.post("/echo", function(req, res) {
   });
 });
 restService.post('/test', (req, res) => {
-  let param = req.body.parameters
+  let param = req.body.result.parameters
   if(param.hasOwnProperty('william')){
     request(options, function (err, response, body) {
       if(err){
