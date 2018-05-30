@@ -51,24 +51,25 @@ restService.post('/test', (req, res) => {
         })
       }
     });
+  } else{
+    if(param.hasOwnProperty('matheus')){
+      request(options, function (err, response, body) {
+        if(err){
+          console.log('err:', err);
+          res.status(400).send('ERROR');
+        } else {
+          console.log('body:', body);
+          var json = JSON.parse(body);
+          return res.status(200).json({
+            speech:`o valor consumo geral é ${json['dados']['consumo_geral']}`,
+            displayText:`o valor consumo geral é ${json['dados']['consumo_geral']}`,
+            source: 'webhooke-echo-sample',
+          })
+        }
+      });
+    }
   }
-  if(param.hasOwnProperty('matheus')){
-    request(options, function (err, response, body) {
-      if(err){
-        console.log('err:', err);
-        res.status(400).send('ERROR');
-      } else {
-        console.log('body:', body);
-        var json = JSON.parse(body);
-        return res.status(200).json({
-          speech:`o valor consumo geral é ${json['dados']['consumo_geral']}`,
-          displayText:`o valor consumo geral é ${json['dados']['consumo_geral']}`,
-          source: 'webhooke-echo-sample',
-        })
-      }
-    });
-  }
-  }
+}
 );
 restService.get('/ok',(req, res) => {
   request(options, function (err, response, body) {
