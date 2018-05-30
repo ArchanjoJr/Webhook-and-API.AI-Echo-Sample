@@ -35,22 +35,10 @@ restService.post("/echo", function(req, res) {
   });
 });
 restService.post('/test', (req, res) => {
-  request(options, function (err, response, body) {
-    if(err){
-      console.log('err:', err);
-      res.status(400).send('ERROR');
-    } else {
-      console.log('body:', body);
-      var json = JSON.parse(body);
-      return res.status(200).json({
-        speech:`o valor final da sua conta é ${json['dados']['valor_final']}`,
-        displayText:`o valor final da sua conta é ${json['dados']['valor_final']}`,
-        source: 'webhooke-echo-sample',
-      })
-      
-    }
-  });
-});
+  let param = req.body.parameters
+  res.send(param);
+  }
+);
 
 restService.post("/audio", function(req, res) {
   var speech = "";
