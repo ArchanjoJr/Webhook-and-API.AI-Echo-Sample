@@ -137,7 +137,7 @@ restService.post('/test', (req, res) => {
       "To process a chicken, we need 44 liters (11.6 gallons) of water.",
       "To process one of the fruits or vegetables, we need 35 liters (9.3 gallons) of water.",
     ];
-    const item = opt[Math.floor(Math.random()*options.length)]; 
+    const item = opt[Math.floor(Math.random()*opt.length)]; 
     res.status(200).json({
       speech:item,
       displayText:item,
