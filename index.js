@@ -28,7 +28,7 @@ restService.use(bodyParser.json());
 restService.post('/test', (req, res) => {
   res.json({
     speech:req.body.result.action,
-    displayText: req.body.result,
+    displayText: req.body.result.action,
     source: 'api-test-dial'
   })   
 });
