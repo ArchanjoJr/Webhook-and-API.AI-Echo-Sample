@@ -26,11 +26,27 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post('/test', (req, res) => {
-  res.json({
-    speech:req.body.result.action,
-    displayText: req.body.result.action,
-    source: 'api-test-dial'
-  })   
+  const action = req.body.result.action;
+  switch (action) {
+    case 'BillStatsIntent':
+    request(options, function (err, response, body) {
+      let json = JSON.parse(body);
+      if(err){
+        res.status(400).json({
+          speech:`erro interno no servidor`,
+          displayText:`erro interno no servidor`,
+          source: 'api-test-dialog',
+        });
+      } else {
+        res.status(200).send({
+          speech:`o valor que voce gastou até hoje é de R$${json['dados']['valor_atual']}`,
+          displayText: `o valor que voce gastou até hoje é de R$${json['dados']['valor_atual']}`,
+          source: 'api-test-dialog',
+        });
+      }
+    });
+      break;
+  }
 });
 
 restService.get('/ok',(req, res) => {
