@@ -46,6 +46,38 @@ restService.post('/test', (req, res) => {
       }
     });
       break;
+    case 'CloseWaterRegister':
+      // URL_OFF = 'http://186.236.67.18:8030/turnoff'
+      /*request(URL_OFF, function (err, response, body) {
+      let json = JSON.parse(body);
+      if(err){
+        res.status(400).json({
+          speech:`erro interno no servidor`,
+          displayText:`erro interno no servidor`,
+          source: 'api-test-dialog',
+        });*/
+      res.status(200).json({
+        speech: 'Registro Fechado',
+        displayText: 'Registro Fechado',
+        source: 'api-test-dial'
+      })
+      break;
+    case 'OpenWaterRegister':
+      // URL_ON = 'http://186.236.67.18:8030/turnon'
+      /*request(URL_ON, function (err, response, body) {
+      let json = JSON.parse(body);
+      if(err){
+        res.status(400).json({
+          speech:`erro interno no servidor`,
+          displayText:`erro interno no servidor`,
+          source: 'api-test-dialog',
+        });*/
+        res.status(200).json({
+          speech: 'Registro Aberto',
+          displayText: 'Registro Aberto',
+          source: 'api-test-dial'
+        })
+      break;
   }
 });
 
